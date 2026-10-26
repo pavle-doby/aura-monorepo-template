@@ -1,0 +1,54 @@
+{
+  "name": "@repo/ui-theme",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint-staged": "lint-staged"
+  },
+  "exports": {
+    "./index.css": "./src/web/index.css",
+    ".": {
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./native": {
+      "import": "./src/native/index.ts",
+      "default": "./src/native/index.ts"
+    },
+    "./tailwind": {
+      "default": "./src/native/tailwindPreset.ts"
+    },
+    "./web": "./src/web/index.css"
+  },
+  "peerDependencies": {
+    "@react-navigation/native": ">=6.0.0",
+    "react": ">=18.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-navigation/native": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@react-navigation/native": "^7.3.17",
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "^19.2.18",
+    "lint-staged": "^17.3.0",
+    "typescript": "5.8.3"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "pnpm exec eslint --fix",
+      "pnpm exec prettier --write"
+    ],
+    "**/*.{md,json}": [
+      "pnpm exec prettier --write"
+    ]
+  }
+}

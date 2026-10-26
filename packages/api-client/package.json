@@ -1,0 +1,40 @@
+{
+  "name": "@repo/api-client",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "generate:api": "orval && pnpm format:generated",
+    "format:generated": "prettier --write ./src/generated",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "axios": "^1.19.0"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^26.3.0",
+    "@types/react": "^19.2.18",
+    "lint-staged": "^17.3.0",
+    "orval": "^8.26.0"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "pnpm exec eslint --fix",
+      "pnpm exec prettier --write"
+    ],
+    "**/*.{md,json}": [
+      "pnpm exec prettier --write"
+    ]
+  }
+}

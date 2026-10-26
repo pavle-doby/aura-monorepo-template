@@ -1,0 +1,47 @@
+{
+  "name": "@repo/shared",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./consts": "./src/consts/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "@repo/contract": "workspace:*",
+    "axios": "^1.19.0",
+    "react-hook-form": "^7.86.0",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^26.3.0",
+    "@types/react": "^19.2.18",
+    "eslint": "^10.9.1",
+    "i18next": "^26.4.0",
+    "lint-staged": "^17.3.0",
+    "react": "19.2.3",
+    "typescript": "5.8.3"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "pnpm exec eslint --fix",
+      "pnpm exec prettier --write"
+    ],
+    "**/*.{md,json}": [
+      "pnpm exec prettier --write"
+    ]
+  }
+}

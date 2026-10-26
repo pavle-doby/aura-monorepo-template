@@ -1,0 +1,36 @@
+{
+  "name": "@repo/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "@repo/db-schema": "workspace:*",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.9"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^26.3.0",
+    "drizzle-kit": "0.31.10",
+    "lint-staged": "^17.3.0"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "pnpm exec eslint --fix",
+      "pnpm exec prettier --write"
+    ],
+    "**/*.{md,json}": [
+      "pnpm exec prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "aura-monorepo-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "api": "cd apps/api && pnpm dev",
+    "web": "cd apps/web && pnpm dev",
+    "ios": "cd apps/native && pnpm ios",
+    "android": "cd apps/native && pnpm android",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "typecheck": "turbo run typecheck",
+    "db:generate": "f() { if [ -z \"$1\" ]; then echo 'Error: --name is required. Usage: pnpm db:generate --name <migration-name>' && exit 1; fi; cd packages/db && pnpm drizzle-kit generate \"$@\"; }; f",
+    "db:push": "cd packages/db && pnpm drizzle-kit push",
+    "db:migrate": "cd packages/db && pnpm drizzle-kit migrate",
+    "db:studio": "cd packages/db && pnpm drizzle-kit studio",
+    "api-client:generate": "pnpm --filter api generate:openapi && pnpm --filter @repo/api-client generate:api",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "^10.9.1",
+    "husky": "^9.1.7",
+    "lint-staged": "17.3.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "turbo": "^2.10.11",
+    "typescript": "5.8.3"
+  },
+  "packageManager": "pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000",
+  "engines": {
+    "node": ">=22"
+  },
+  "version": "1.0.0"
+}
